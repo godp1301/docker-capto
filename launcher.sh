@@ -32,6 +32,6 @@ var settings = {
 module.exports = settings;
 EOF
 
-wait-for-mongo mongodb://${MONGO_HOST}:${MONGO_PORT}/capto
+wait-for-mongo mongodb://${MONGO_HOST}:${MONGO_PORT}/capto 30000
 
 capto run
