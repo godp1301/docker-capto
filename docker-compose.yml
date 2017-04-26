@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  mongoserver:
+    image: mongo:3.0
+
+  captoserver:
+     depends_on: 
+       - mongoserver
+     image: godp1301/docker-capto
+     environment:
+       - MONGO_HOST=mongoserver
+       - SMTP_PORT=9025
+       - SMTP_IP='127.0.0.1'
+       - HTTP_PORT=9024
+       - HTTP_IP='127.0.0.1'
