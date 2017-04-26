@@ -9,7 +9,7 @@ var transporter = nodemailer.createTransport(sendmailTransport());
 var settings = {
     database: {
         options: { server: {  auto_reconnect: true, socketOptions: { keepAlive: 1 } } },
-        url: 'mongodb://${MONGO_HOST}/capto',
+        url: 'mongodb://${MONGO_HOST}:${MONGO_PORT}/capto',
         debug: false,
         textSearchLanguage: 'english'
     },
@@ -31,5 +31,7 @@ var settings = {
 
 module.exports = settings;
 EOF
+
+wait-for-mongo mongodb://${MONGO_HOST}:${MONGO_PORT}/capto
 
 capto run
